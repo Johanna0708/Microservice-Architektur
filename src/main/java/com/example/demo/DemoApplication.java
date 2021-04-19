@@ -39,6 +39,10 @@ public class DemoApplication {
 
 	@PostMapping("/join")
 	public String join(@RequestBody Student student) {
-		return String.format(student.vorname + " " + student.nachname + " wurde hinzugefügt!");
+		if (student.vorname == null || student.nachname == null){
+			return String.format("400 - fehlerhafte Anfrage!");
+		} else {
+			return String.format(student.vorname + " " + student.nachname + " wurde hinzugefügt!" + "\n" + "201 - Ressource wurde erfolgreich erstellt!");
+		}
 	}
 }
